@@ -13,30 +13,21 @@ const images = [
   },
 ];
 
-// Отримуємо список ul.gallery
 const galleryList = document.querySelector('ul.gallery');
 
-// Створюємо фрагмент, щоб додати до нього всі елементи галереї перед додаванням їх в DOM
 const fragment = document.createDocumentFragment();
 
-// Для кожного об'єкта в масиві images
 images.forEach(image => {
-  // Створюємо новий елемент <li>
   const listItem = document.createElement('li');
 
-  // Створюємо новий елемент <img>
   const img = document.createElement('img');
 
-  // Встановлюємо атрибути src та alt для зображення
   img.src = image.url;
   img.alt = image.alt;
 
-  // Додаємо зображення в елемент <li>
   listItem.appendChild(img);
 
-  // Додаємо елемент <li> в фрагмент
   fragment.appendChild(listItem);
 });
 
-// Додаємо всі елементи галереї разом з фрагменту в список ul.gallery в DOM за одну операцію
 galleryList.appendChild(fragment);
