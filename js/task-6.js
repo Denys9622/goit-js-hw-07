@@ -1,7 +1,5 @@
 function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, '0')}`;
+  return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
 }
 
 const createButton = document.querySelector('[data-create]');
@@ -20,15 +18,19 @@ createButton.addEventListener('click', () => {
 destroyButton.addEventListener('click', destroyBoxes);
 
 function createBoxes(amount) {
-  destroyBoxes();
+  destroyBoxes(); 
+  const fragment = document.createDocumentFragment(); 
+
   for (let i = 0; i < amount; i++) {
     const box = document.createElement('div');
     box.classList.add('box');
     box.style.backgroundColor = getRandomHexColor();
     box.style.width = `${30 + i * 10}px`;
     box.style.height = `${30 + i * 10}px`;
-    boxesContainer.appendChild(box);
+    fragment.appendChild(box); 
   }
+
+  boxesContainer.appendChild(fragment); 
 }
 
 function destroyBoxes() {
